@@ -17,33 +17,3 @@ main {
   align-items: center;
   font-size: 1.2rem;
 }
-
-.task-list {
-  border: 1px solid beige;
-  flex: 2;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.2rem;
-  margin-top: 1.2rem;
-}
-
-.add-task {
-  border: 1px solid blueviolet;
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-input {
-  font-size: 1.2rem;
-}
-
-button {
-  font-size: 1.2rem;
-}
-
-li:hover {
-  font-size: 1.3rem;
-  text-decoration: line-through red;
-}

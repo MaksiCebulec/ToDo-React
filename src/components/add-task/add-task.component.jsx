@@ -1,4 +1,5 @@
 import { Component } from "react";
+import './add-task.styles.css';
 
 class AddTask extends Component {
     render() {

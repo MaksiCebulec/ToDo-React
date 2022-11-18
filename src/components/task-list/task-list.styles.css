@@ -1,0 +1,15 @@
+.task-list {
+    border: 1px solid beige;
+    flex: 2;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+
+li:hover {
+    font-size: 1.3rem;
+    text-decoration: line-through red;
+}

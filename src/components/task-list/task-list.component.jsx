@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import './task-list.styles.css';
 class TaskList extends Component {
     // constructor() { no need for this
     //     super();
