@@ -8,8 +8,11 @@
     margin-top: 1.2rem;
 }
 
+li {
+    transition: all 0.25s ease-out;
+}
 
 li:hover {
     font-size: 1.3rem;
-    text-decoration: line-through red;
+    text-decoration: 2px line-through red;
 }

@@ -44,7 +44,7 @@ class App extends Component {
     event.key === 'Enter' && this.addTask(); {/*if(event.key==='Enter' this.addTask();)*/ }
   }
 
-  deleteTask = (index) => {//delete
+  deleteTask = (event, index) => {//delete
     const { tasks } = this.state;
     tasks.splice(index, 1);
     this.setState(() => {
@@ -57,7 +57,7 @@ class App extends Component {
     const { deleteTask, handleChange, keyDown, addTask } = this;
     return (
       <div className="App" >
-        <h1>My To Do List</h1>
+        <h1 className="animate__animated animate__bounce">My To Do List</h1>
         <main>
           <TaskList tasks={tasks} deleteTask={deleteTask} />
           <AddTask handleChange={handleChange} keyDown={keyDown} addTask={addTask} />
