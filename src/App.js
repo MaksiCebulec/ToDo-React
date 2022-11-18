@@ -14,14 +14,19 @@ class App extends Component {
 
   addTask = () => {
     const { inputValue: taskText, tasks } = this.state;
-    tasks.push(taskText);
-    this.setState(() => {
-      return { tasks }
-    }, () => {
+    if (taskText) {
+      tasks.push(taskText);
+      this.setState(() => {
+        return { tasks }
+      }, () => {
+        console.log('setStateUpdate');
+        this.state.inputValue = '';
+        this.state.inputElement.value = '';
+      });
+    } else {
+      alert('No input text!!');
+    }
 
-      console.log('setStateUpdate');
-      this.state.inputElement.value = '';
-    });
   }
 
 
