@@ -42,3 +42,8 @@ input {
 button {
   font-size: 1.2rem;
 }
+
+li:hover {
+  font-size: 1.3rem;
+  text-decoration: line-through red;
+}
