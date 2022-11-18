@@ -1,6 +1,7 @@
 
 import './App.css';
 import { Component } from 'react';
+import TaskList from './components/task-list/task-list.component';
 
 class App extends Component {
   constructor() {
@@ -58,13 +59,7 @@ class App extends Component {
       <div className="App" >
         <h1>My To Do List</h1>
         <main>
-          <div className='task-list'>
-            <ul>
-              {tasks.map((task, index) => {
-                return <li key={index} onClick={() => deleteTask(index)}>{task}</li>
-              })}
-            </ul>
-          </div>
+          <TaskList tasks={tasks} deleteTask={deleteTask} />
           <div className='add-task'>
             <input type='search' id='input' onChange={handleChange} onKeyDown={keyDown} />
             <button onClick={addTask}>Add Task</button>
