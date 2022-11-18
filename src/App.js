@@ -19,7 +19,6 @@ class App extends Component {
       this.setState(() => {
         return { tasks }
       }, () => {
-        console.log('setStateUpdate');
         this.state.inputValue = '';
         this.state.inputElement.value = '';
       });
@@ -36,14 +35,24 @@ class App extends Component {
         inputValue: event.target.value,
         inputElement: event.target
       }
-    }, () => {
-      console.log('SetState finished')
     });
   }
 
   keyDown = (event) => {
     {/*&& as a if statement */ }
     event.key === 'Enter' && this.addTask(); {/*if(event.key==='Enter' this.addTask();)*/ }
+  }
+
+  liClick = (index) => {
+    // const elementClicked = event.target;
+    // console.log(event.target);
+    const { tasks } = this.state;
+    tasks.splice(index, 1);
+    this.setState(() => {
+      return { tasks }
+    });
+
+
   }
 
   render() {
@@ -55,7 +64,7 @@ class App extends Component {
           <div className='task-list'>
             <ul>
               {tasks.map((task, index) => {
-                return <li key={index}>{task}</li>
+                return <li key={index} onClick={() => this.liClick(index)}>{task}</li>
               })}
             </ul>
           </div>
