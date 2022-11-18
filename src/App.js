@@ -1,25 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import { Component } from 'react';
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tasks: ['make bed', 'study for 1 hour', 'shower'],
+      inputValue: '',
+      inputElement: ''
+    }
+  }
+
+  addTask = () => {
+    const { inputValue: taskText, tasks } = this.state;
+    tasks.push(taskText);
+    this.setState(() => {
+      return { tasks }
+    }, () => {
+
+      console.log('setStateUpdate');
+      this.state.inputElement.value = '';
+    });
+  }
+
+
+  handleChange = (event) => {
+    this.setState(() => {
+      return {
+        inputValue: event.target.value,
+        inputElement: event.target
+      }
+    }, () => {
+      console.log('SetState finished')
+    });
+  }
+
+  keyDown = (event) => {
+    {/*&& as a if statement */ }
+    event.key === 'Enter' && this.addTask(); {/*if(event.key==='Enter' this.addTask();)*/ }
+  }
+
+  render() {
+    const { tasks } = this.state;
+    return (
+      <div className="App" >
+        <h1>My To Do List</h1>
+        <main>
+          <div className='task-list'>
+            <ul>
+              {tasks.map((task, index) => {
+                return <li key={index}>{task}</li>
+              })}
+            </ul>
+          </div>
+          <div className='add-task'>
+            <input type='search' id='input' onChange={this.handleChange} onKeyDown={this.keyDown} />
+            <button onClick={this.addTask}>Add Task</button>
+          </div>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
