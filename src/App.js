@@ -2,6 +2,7 @@
 import './App.css';
 import { Component } from 'react';
 import TaskList from './components/task-list/task-list.component';
+import AddTask from './components/add-task/add-task.component';
 
 class App extends Component {
   constructor() {
@@ -60,10 +61,7 @@ class App extends Component {
         <h1>My To Do List</h1>
         <main>
           <TaskList tasks={tasks} deleteTask={deleteTask} />
-          <div className='add-task'>
-            <input type='search' id='input' onChange={handleChange} onKeyDown={keyDown} />
-            <button onClick={addTask}>Add Task</button>
-          </div>
+          <AddTask handleChange={handleChange} keyDown={keyDown} addTask={addTask} />
         </main>
       </div>
     );
