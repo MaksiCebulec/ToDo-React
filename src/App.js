@@ -43,20 +43,17 @@ class App extends Component {
     event.key === 'Enter' && this.addTask(); {/*if(event.key==='Enter' this.addTask();)*/ }
   }
 
-  liClick = (index) => {
-    // const elementClicked = event.target;
-    // console.log(event.target);
+  deleteTask = (index) => {//delete
     const { tasks } = this.state;
     tasks.splice(index, 1);
     this.setState(() => {
       return { tasks }
     });
-
-
   }
 
   render() {
     const { tasks } = this.state;
+    const { deleteTask, handleChange, keyDown, addTask } = this;
     return (
       <div className="App" >
         <h1>My To Do List</h1>
@@ -64,13 +61,13 @@ class App extends Component {
           <div className='task-list'>
             <ul>
               {tasks.map((task, index) => {
-                return <li key={index} onClick={() => this.liClick(index)}>{task}</li>
+                return <li key={index} onClick={() => deleteTask(index)}>{task}</li>
               })}
             </ul>
           </div>
           <div className='add-task'>
-            <input type='search' id='input' onChange={this.handleChange} onKeyDown={this.keyDown} />
-            <button onClick={this.addTask}>Add Task</button>
+            <input type='search' id='input' onChange={handleChange} onKeyDown={keyDown} />
+            <button onClick={addTask}>Add Task</button>
           </div>
         </main>
       </div>
