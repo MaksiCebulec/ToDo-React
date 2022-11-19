@@ -8,7 +8,7 @@ class TaskList extends Component {
     render() {
         const { tasks, deleteTask } = this.props;
         return (
-            <div className='task-list cntnr'>
+            <div className='task-list'>
                 <ul>
                     {tasks.map((task, index) => {
                         return <li key={index} onClick={(event) => deleteTask(event, index)}>{task}</li>
