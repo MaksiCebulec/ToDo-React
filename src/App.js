@@ -1,11 +1,9 @@
 
 import './App.css';
-import { Component, Fragment } from 'react';
-import { useState, useEffect } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import TaskList from './components/task-list/task-list.component';
-import AddTask from './components/add-task/add-task.component';
 import ToDoList from './routes/to-do-list/to-do-list.component';
+import Navigation from './routes/navigation/navigation.component';
+import Home from './routes/home/home.component';
 
 const Notes = () => {
   return (
@@ -14,21 +12,14 @@ const Notes = () => {
 
 
 }
-const Nav = () => {
-  return (
-    <Fragment>
-      <h1>This is NAV</h1>
-      <Outlet />
-    </Fragment>
-  );
-}
 
 const App = () => {
 
   return (
     <div className="App" >
       <Routes>
-        <Route path='/' element={<Nav />}>
+        <Route path='/' element={<Navigation />}>
+          <Route index element={<Home />} />
           <Route path='to-do' element={<ToDoList />} />
           <Route path='notes' element={<Notes />} />
         </Route>
