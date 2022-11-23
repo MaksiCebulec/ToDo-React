@@ -1,32 +1,52 @@
-
-import './App.css';
-import { Routes, Route, Outlet } from 'react-router-dom';
-import ToDoList from './routes/to-do-list/to-do-list.component';
-import Navigation from './routes/navigation/navigation.component';
-import Home from './routes/home/home.component';
-
-const Notes = () => {
-  return (
-    <h1>These are your notes.</h1>
-  );
+import { Component, Fragment } from 'react';
+import { useState, useEffect } from 'react';
+import TaskList from '../../components/task-list/task-list.component';
+import AddTask from '../../components/add-task/add-task.component';
+const ToDoList = () => {
+    const [tasks, setTasks] = useState(['make bed', 'study for 1 hour', 'shower']);
+    const [inputValue, setInputValue] = useState('');
 
 
+
+    const addTask = () => {
+        const taskText = inputValue;
+        if (taskText) {
+            tasks.push(taskText);
+            setTasks(tasks);
+            setInputValue('');
+        } else {
+            alert('No input text!!');
+        }
+    }
+
+    const handleChange = (event) => {
+        setInputValue(event.target.value);
+    }
+
+    const keyDown = (event) => {
+        {/*&& as a if statement */ }
+        event.key === 'Enter' && addTask(); {/*if(event.key==='Enter' this.addTask();)*/ }
+    }
+
+    const deleteTask = (event, index) => {//delete
+        const array = [...tasks];
+        array.splice(index, 1);
+        setTasks(array);
+    }
+
+
+    return (
+        <div className="App" >
+            <h1>My To Do List</h1>
+            <main>
+                <TaskList tasks={tasks} deleteTask={deleteTask} />
+                <AddTask handleChange={handleChange} keyDown={keyDown} addTask={addTask} inputValue={inputValue} />
+            </main>
+        </div>
+    );
 }
 
-const App = () => {
-
-  return (
-    <div className="App" >
-      <Routes>
-        <Route path='/' element={<Navigation />}>
-          <Route index element={<Home />} />
-          <Route path='to-do' element={<ToDoList />} />
-          <Route path='notes' element={<Notes />} />
-        </Route>
-      </Routes>
-    </div>
-  );
-}
+export default ToDoList;
 
 
 // class App extends Component {
@@ -92,4 +112,3 @@ const App = () => {
 // }
 
 
-export default App;
