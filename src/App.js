@@ -1,6 +1,5 @@
-
 import './App.css';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ToDoList from './routes/to-do-list/to-do-list.component';
 import Navigation from './routes/navigation/navigation.component';
 import Home from './routes/home/home.component';
